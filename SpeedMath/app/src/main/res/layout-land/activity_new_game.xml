@@ -1,0 +1,81 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="com.example.alanwei.speedmath.NewGameActivity"
+    android:weightSum="2"
+    android:background="#000"
+    >
+
+    
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="TIMER"
+            android:id="@+id/textView5"
+            android:layout_marginLeft="5dp"
+            android:textColor="@android:color/holo_blue_light"
+            android:onClick="displayGameResultPage"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/timer_val"
+            android:id="@+id/timer_val"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#FFF"
+            android:textSize="30sp"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/penalty_time"
+            android:id="@+id/penalty_time"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/holo_red_light" />
+
+
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="CLICK RIGHT OR WRONG"
+            android:id="@+id/textView6"
+            android:layout_below="@+id/textView5"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="5dp"
+            android:textColor="@android:color/holo_blue_light" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/question_list"
+            android:layout_gravity="center_horizontal"
+            />
+
+        </LinearLayout>
+
+
+
+
+</LinearLayout>

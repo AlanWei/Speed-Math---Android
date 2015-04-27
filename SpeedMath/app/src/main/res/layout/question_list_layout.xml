@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:descendantFocusability="blocksDescendants">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/question_list_item"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:textColor="#FFF"
+        />
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/right_icon"
+        android:background="@drawable/right_icon"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:alpha="0.3"
+        />
+
+    <Button
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/wrong_icon"
+        android:background="@drawable/wrong_icon"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="12dp"
+        android:alpha="0.3"
+        />
+
+</LinearLayout>

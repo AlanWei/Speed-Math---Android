@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000"
+    tools:context="com.example.alanwei.speedmath.DisplayAboutActivity"
+    android:orientation="horizontal"
+    android:weightSum="2">
+
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:id="@+id/imageView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:contentDescription="@string/home_pic"
+            android:src="@drawable/home_pic"
+            android:adjustViewBounds="true"
+            android:maxHeight="200dp"
+            android:scaleType="fitXY"
+            android:layout_alignParentBottom="true" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Version: 1.0"
+            android:id="@+id/textView2"
+            android:textColor="#ffffff"
+            android:layout_marginTop="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/textView4"
+            android:layout_toEndOf="@+id/textView4"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Author: Alan Wei"
+            android:id="@+id/textView3"
+            android:textColor="#ffffff"
+            android:layout_below="@+id/textView4"
+            android:layout_alignLeft="@+id/textView2"
+            android:layout_alignStart="@+id/textView2"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Alan&apos;s Blog"
+            android:id="@+id/textView4"
+            android:textColor="#ffffff"
+            android:layout_below="@+id/textView2"
+            android:layout_toRightOf="@+id/imageView"
+            android:layout_toEndOf="@+id/imageView"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+</LinearLayout>
