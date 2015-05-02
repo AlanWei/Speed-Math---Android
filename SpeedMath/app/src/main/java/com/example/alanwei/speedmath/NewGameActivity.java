@@ -66,8 +66,34 @@ public class NewGameActivity extends ActionBarActivity {
         questionList = createQuestionList();
         String[] qL = questionList.toArray(new String[questionList.size()]);
         Boolean[] rw = rightOrWrongs.toArray(new Boolean[rightOrWrongs.size()]);
-        qla = new QuestionListAdapter(this, qL, rw);
+
+        //ListItem[] l = new ListItem[20];
+        List<ListItem> l = new ArrayList<>();
+        for (int i=0; i<20;i++){
+            Button b1 = new Button(this);
+            Button b2 = new Button(this);
+
+            b1.setAlpha(0.3f);
+            b2.setAlpha(0.3f);
+
+            ListItem li = new ListItem(qL[i], b1, b2, rw[i]);
+
+            l.add(li);
+        }
+
+        ListItem[] lArray = l.toArray(new ListItem[20]);
+
+        qla = new QuestionListAdapter(this, lArray);
         listView.setAdapter(qla);
+        //listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            //@Override
+            //public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //Toast.makeText(getApplicationContext(),
+                       //"Click ListItem Number " + position, Toast.LENGTH_LONG)
+                        //.show();
+            //}
+        //});
+        //listView.setEnabled(false);
 
         // set Timer
         penaltyVal = (TextView) findViewById(R.id.penalty_time);
@@ -227,15 +253,15 @@ public class NewGameActivity extends ActionBarActivity {
                 Random r1 = new Random();
                 switch (symbol_strings.get(l)){
                     case "+":
-                        Integer total4 = firstNumber.get(l) + secondNumber.get(l) - r1.nextInt(2) + 1;
+                        Integer total4 = firstNumber.get(l) + secondNumber.get(l) - r1.nextInt(2) + 2;
                         results.add(firstNumber.get(l).toString() + " + " + secondNumber.get(l).toString() + " = " + total4.toString());
                         break;
                     case "-":
-                        Integer total5 = firstNumber.get(l) - secondNumber.get(l) + r1.nextInt(2) + 1;
+                        Integer total5 = firstNumber.get(l) - secondNumber.get(l) + r1.nextInt(2) + 2;
                         results.add(firstNumber.get(l).toString() + " - " + secondNumber.get(l).toString() + " = " + total5.toString());
                         break;
                     case "*":
-                        Integer total6 = firstNumber.get(l) * secondNumber.get(l) + r1.nextInt(2) + 1;
+                        Integer total6 = firstNumber.get(l) * secondNumber.get(l) + r1.nextInt(2) + 2;
                         results.add(firstNumber.get(l).toString() + " * " + secondNumber.get(l).toString() + " = " + total6.toString());
                         break;
                 }
