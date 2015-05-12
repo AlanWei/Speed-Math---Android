@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,10 +39,15 @@ public class NewGameActivity extends ActionBarActivity {
     private Handler finishHandler = new Handler();
 
     public ArrayList<Boolean> rightOrWrongs = new ArrayList<Boolean>();
+    public boolean[] corrects = new boolean[20];
     public int penaltyTime;
     public int minute;
     public int second;
     public int milliseconds;
+    public int rightAnswer;
+
+    public boolean[] rw;
+    public String[] qL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +70,16 @@ public class NewGameActivity extends ActionBarActivity {
         listView = (ListView)findViewById(R.id.question_list);
         questionList = new ArrayList<String>();
         questionList = createQuestionList();
-        String[] qL = questionList.toArray(new String[questionList.size()]);
-        Boolean[] rw = rightOrWrongs.toArray(new Boolean[rightOrWrongs.size()]);
+        //String[] qL = questionList.toArray(new String[questionList.size()]);
+        //Boolean[] rw = rightOrWrongs.toArray(new Boolean[rightOrWrongs.size()]);
+
+        qL = new String[20];
+        rw = new boolean[20];
+        for (int i=0; i<20; i++)
+        {
+            rw[i] = rightOrWrongs.get(i);
+            qL[i] = questionList.get(i);
+        }
 
         //ListItem[] l = new ListItem[20];
         List<ListItem> l = new ArrayList<>();
@@ -85,15 +99,6 @@ public class NewGameActivity extends ActionBarActivity {
 
         qla = new QuestionListAdapter(this, lArray);
         listView.setAdapter(qla);
-        //listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            //@Override
-            //public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Toast.makeText(getApplicationContext(),
-                       //"Click ListItem Number " + position, Toast.LENGTH_LONG)
-                        //.show();
-            //}
-        //});
-        //listView.setEnabled(false);
 
         // set Timer
         penaltyVal = (TextView) findViewById(R.id.penalty_time);
@@ -139,12 +144,20 @@ public class NewGameActivity extends ActionBarActivity {
                 String s;
                 s = timerVal.getText().toString();
                 penaltyTime = qla.penaltyTime;
+                rightAnswer = qla.rightAnswer;
+
+                corrects = qla.corrects;
 
                 intent.putExtra("originalTime", s);
                 intent.putExtra("penaltyTime", penaltyTime);
                 intent.putExtra("minute", minute);
                 intent.putExtra("second", second);
                 intent.putExtra("milliseconds", milliseconds);
+                intent.putExtra("rightAnswer", rightAnswer);
+                intent.putExtra("equations", questionList);
+                intent.putExtra("corrects", corrects);
+                intent.putExtra("equations", qL);
+                intent.putExtra("answers", rw);
 
                 alert.show();
                 textHandler.removeCallbacks(updateTextThread);

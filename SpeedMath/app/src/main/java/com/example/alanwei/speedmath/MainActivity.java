@@ -1,18 +1,47 @@
 package com.example.alanwei.speedmath;
 
+import android.app.AlertDialog;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.InputType;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.*;
 import android.content.*;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
+
+    private String playerName = "";
+    private String quickestTime = "";
+    private TextView t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        HighScoreDataSource hSource = new HighScoreDataSource(this);
+        hSource.open();
+
+        List<HighScore> lh = new ArrayList<>();
+
+        lh = hSource.getAllHighScores();
+
+        hSource.close();
+
+        String time = Integer.toString(lh.get(0).getTime());
+
+        quickestTime = "Quickest Time: " + time + "s";
+
+        t = (TextView)findViewById(R.id.textView);
+
+        t.setText(quickestTime);
     }
 
 
@@ -47,7 +76,10 @@ public class MainActivity extends ActionBarActivity {
 
     public void startNewGame(View view){
         Intent intent = new Intent(this, NewGameActivity.class);
+        intent.putExtra("player_name", this.playerName);
         startActivity(intent);
+
+
     }
 
     public void showAboutPage(View view){
@@ -57,6 +89,11 @@ public class MainActivity extends ActionBarActivity {
 
     public void showHowToPlayPage(View view){
         Intent intent = new Intent(this, HowToPlayActivity.class);
+        startActivity(intent);
+    }
+
+    public void showHighScore(View view){
+        Intent intent = new Intent(this, HighScoreActivity.class);
         startActivity(intent);
     }
 }

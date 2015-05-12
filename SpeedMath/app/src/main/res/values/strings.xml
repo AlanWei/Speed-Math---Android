@@ -14,4 +14,6 @@
     <string name="penalty_time">Penalty Time: 0s</string>
     <string name="title_activity_game_result">GameResultActivity</string>
     <string name="title_activity_how_to_play">HowToPlayActivity</string>
+    <string name="title_activity_high_score">HighScoreActivity</string>
+    <string name="title_activity_players_on_server">PlayersOnServer</string>
 </resources>

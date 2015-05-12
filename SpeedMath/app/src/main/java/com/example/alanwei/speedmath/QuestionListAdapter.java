@@ -31,6 +31,12 @@ public class QuestionListAdapter extends ArrayAdapter<ListItem>{
     private static LayoutInflater inflater=null;
     private List<Float> userSelect = new ArrayList<Float>();
 
+    public Integer rightAnswer = 0;
+    public Integer wrongAnswer = 0;
+
+    public boolean[] corrects = new boolean[20];
+
+
     public QuestionListAdapter(Context context, ListItem[] values) {
         super(context, R.layout.question_list_layout, values);
         this.context = context;
@@ -84,7 +90,14 @@ public class QuestionListAdapter extends ArrayAdapter<ListItem>{
 
                     if (values[position].right == false){
                         penaltyTime += 3;
+                        wrongAnswer += 1;
+                        corrects[position] = false;
                     }
+                    else {
+                        rightAnswer += 1;
+                        corrects[position] = true;
+                    }
+
                     Log.i("row", Boolean.toString(values[position].right));
 
                     if (count == 20){
@@ -113,6 +126,13 @@ public class QuestionListAdapter extends ArrayAdapter<ListItem>{
 
                     if (values[position].right == true){
                         penaltyTime += 3;
+                        wrongAnswer += 1;
+                        corrects[position] = false;
+                    }
+                    else
+                    {
+                        rightAnswer += 1;
+                        corrects[position] = true;
                     }
 
                     if (count == 20){
